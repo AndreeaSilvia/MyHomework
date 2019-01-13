@@ -1,0 +1,7 @@
+	PROGRAM Ana 
+	VAR Ceva : INTEGER ; a : INTEGER
+	BEGIN Ceva := 8732 ;
+	WRITE ( Ceva ) ;
+	a := ( Ceva * 2 ) + 3 ;
+	WRITE ( a ) 
+	END
