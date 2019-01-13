@@ -1,0 +1,1 @@
+PROGRAM ana VAR ceva : INTEGER BEGIN altceva := 8732 END

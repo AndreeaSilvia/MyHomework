@@ -1,0 +1,10 @@
+
+	PROGRAM ana
+	VAR variabila , gigi , acu : INTEGER
+	BEGIN
+	acu := 21 + 1 ;
+	gigi := acu + 30 ;
+	READ ( acu ) ;
+	WRITE ( acu , gigi ) ;
+	FOR  gigi := 1 TO 3  DO WRITE ( gigi )	
+	END 

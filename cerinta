@@ -1,0 +1,34 @@
+  Folosind flex și bison să se implementeze un instrument de analiză gramaticală care să analizeze lexical, sintactic și semantic programele care pot fi scrise în limbajul de programare definit de către gramatica scrisă pe slide-urile 185-188 ale fisierului 2_Limbaje independente de context.pdf.
+
+       Punctaj:
+
+    Definirea atomilor lexicali care formează vocabularul limbajului – 0.5 p
+    Definirea gramaticii care definește sintaxa limbajului – 0.5 p
+    Corecta analiza lexicala – 2 p
+    Corecta analiză sintactică – 2 p
+    Corecta definire a tabelei de simboli – 2 p
+    Corecta analiză semantică – 3 p
+
+       Livrabilul temei consta in link-ul catre repository-ul GitHub unde sunt pastrate fisierele ce constituie proiectul si fisierele de intrare folosite pentru testarea executabilului.
+
+       Pentru maxim 3 puncte in plus la nota finala: generare cod intermediar MIPS32 pentru programele de intrare.
+
+1. < prog >→ PROGRAM < prog − name > VAR < dec − list > BEGIN < stmt − list > END.
+2. < prog − name >→ id
+3. < dec − list >→< dec > | < dec − list >; < dec >
+4. < dec >→< id − list >:< type >
+5. < type >→ INTEGER
+6. < id − list >→ id| < id − list >, id
+7. < stmt − list >→< stmt > | < stmt − list >; < stmt >
+8. < stmt >→< assign > | < read > | < write > | < for >
+9. < assign >→ id :=< exp >
+10. < exp >→< term > | < exp > + < term > | < exp > − < term >
+11. < term >→< factor > | < term > ∗ < factor > | < term > DIV < factor >
+12. < factor >→ id|int|(< exp >)
+13. < read >→ READ(< id − list >)
+14. < write >→ WRITE (< id − list >)
+15. < for >→ FOR < index − exp > DO < body >
+16. < index − exp >→ id :=< exp > TO < exp >
+17. < body >→< stmt > |BEGIN < stmt − list > END
+
+

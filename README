@@ -1,0 +1,20 @@
+1. Mai intai am corectat gramatica lexical cu corectare.l. Nu stiu daca mergea direct in 
+gramatica.l, am preferat sa parsez token separat. In plus am unele match-uri diferite. Se
+corecteaza urmatoarele: se sterg spatiile in plus, se rearanjeaza comenzile principale prin punerea lor la inceput de linie, se identeaza in functie de parantezele rotunde, orice e considerat nume de ceva se va scrie cu litera mare. Daca nu sunt spatii unde trebuie se ia "cuvantul" ca atare (de exemplu "ex1BEGIN" va fi vazut ca un nume de variabila si capitalizat)
+
+2. In gramatica.l parsez elementele gramaticii si calculez linia si coloana pe care pe aflu in fisierul de intrare (datele vor fi folosite la atentionarea greselilor utilizatorului). Tot acolo
+calculez var si sir.
+
+3. Numerele negative nu sunt luate in considerare. - ar trebui sa aiba token separat (are deja) dupa care sa fie analizat in functie de context in .y dar regulile de productie nu au fost facute in acest fel. Daca se pune - 21 la atribuire apare eroare sintactica nefiindca o regula care sa se potriveasca.
+
+4. In declararea de variabile de la inceputul programului se folosesc liste la finalul carora li se precizeaza tipul, de aici rezulta ca trebuie adaugate in tabel fara a le fi precizat tipul acest lucru intamplandu-se abia la final. Fiindca ar putea exista liste multiple declarate in VAR problema e complicata de tratat. Ori cate o lista simpla inlantuita pentru fiecare lista declarata in parte (se verifica in toate listele existenta unei variabile, tipul, valoarea) ori retinerea a indexului curent in lista inlantuita, iar tipul sa fie adaugat in functie de el la fiecare restrangere.
+
+5. VAR foloseste in reguli id_list la fel ca alte functii precum READ, WRITE s.a.m.d. A fost implementat un flag pentru a stii daca a avut loc sau nu declararea de variabile atunci cand construim tabela. S-a tinut cont de modul in care bison face s-r.
+
+6. Am MODIFICAT o regula de productie: dec_list. Era scrisa ca recursiva stanga si nu mergea corect flagul de declarare (alta solutie nu am gasit ca sa functioneze corect la declararea variabilelor in liste multiple). Acelasi motiv si pentru celalalte reguli de productie care il contin pe dec_list.
+
+7. Pentru activarea flag-urilor ar fi buna o modalitate de a analiza yychar (la shiftari). Dezactivarea s-ar face o data cu reduce pe regula. Cum? Later: extern bool si analiza in fisierul *.l
+
+8. Pentru functia de la for ar trebui sa se determine cumva corpul functiei si sa se excute de n ori; Cum? Raspuns partial "Using Mid-Rule Actions"
+
+9. Citire? switch de pe file pe stdin la yyin cand apare scanf. Cum?
